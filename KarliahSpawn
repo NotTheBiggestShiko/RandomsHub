@@ -1,0 +1,160 @@
+wait()
+local Player = game.Players.LocalPlayer
+local Character = Player.Character
+local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+
+function CreateDummy()
+	--physical
+	local Dummy = Instance.new("Model")
+	Dummy.Name = "Karliah"
+	Dummy.Parent = workspace
+	
+	local Humanoid = Instance.new("Humanoid",Dummy)
+	Humanoid.Name = "Humanoid"
+	Humanoid.RequiresNeck = false
+	Humanoid.AutoRotate = true
+	
+	local RootPart = Instance.new("Part",Dummy)
+	RootPart.Name = "HumanoidRootPart"
+	RootPart.Size = Vector3.new(2,2,1)
+	RootPart.Transparency = 1
+	
+	local Head = Instance.new("Part",Dummy)
+	Head.Name = "Head"
+	Head.Size = Vector3.new(1.2, 1.21, 1.2)
+	Head.Color = Color3.fromRGB(150, 172, 186)
+	--Head.MeshId = "rbxassetid://5591363797"
+	local HeadMesh = Instance.new("SpecialMesh",Head)
+	HeadMesh.MeshId = "rbxassetid://5591363797"
+	
+	local DGFace = Instance.new("Decal",Head)
+	DGFace.Name = "DGFace"
+	DGFace.Texture = "http://www.roblox.com/asset/?id=4608029036"
+	DGFace.Color3 = Color3.fromRGB(218, 164, 0)
+	
+	local Tatoo = Instance.new("Decal",Head)
+	Tatoo.Name = "Tatoo"
+	Tatoo.Texture = "rbxassetid://6085186102"
+	Tatoo.Color3 = Color3.fromRGB(190, 0, 0)
+	
+	local Sclera = Instance.new("Decal",Head)
+	Sclera.Name = "Sclera"
+	Sclera.Texture = "http://www.roblox.com/asset/?id=4607991394"
+	
+	local ShapeA = Instance.new("Decal",Head)
+	ShapeA.Name = "ShapeA"
+	ShapeA.Texture = "http://www.roblox.com/asset/?id=4608017383"
+	
+	local Torso = Instance.new("Part",Dummy)
+	Torso.Name = "Torso"
+	Torso.Size = Vector3.new(2,2,1)
+	Torso.Color = Color3.fromRGB(150, 172, 186)
+	
+	local TorsoMesh = Instance.new("CharacterMesh",Dummy)
+	TorsoMesh.BodyPart = Enum.BodyPart.Torso
+	TorsoMesh.MeshId = "48112070"
+
+	local RightArm = Instance.new("Part",Dummy)
+	RightArm.Name = "Right Arm"
+	RightArm.Size = Vector3.new(1,2,1)
+	RightArm.Color = Color3.fromRGB(150, 172, 186)
+	
+	local LeftArm = Instance.new("Part",Dummy)
+	LeftArm.Name = "Left Arm"
+	LeftArm.Size = Vector3.new(1,2,1)
+	LeftArm.Color = Color3.fromRGB(150, 172, 186)
+	
+	local RightLeg = Instance.new("Part",Dummy)
+	RightLeg.Name = "Right Leg"
+	RightLeg.Size = Vector3.new(1,2,1)
+	RightLeg.Color = Color3.fromRGB(150, 172, 186)
+
+	local LeftLeg = Instance.new("Part",Dummy)
+	LeftLeg.Name = "Left Leg"
+	LeftLeg.Size = Vector3.new(1,2,1)
+	LeftLeg.Color = Color3.fromRGB(150, 172, 186)
+	
+	local Shirt = Instance.new("Shirt",Dummy)
+	Shirt.ShirtTemplate = "http://www.roblox.com/asset/?id=12141187725"
+	
+	local Pants = Instance.new("Pants",Dummy)
+	Pants.PantsTemplate = "http://www.roblox.com/asset/?id=12141214001"
+	
+	local Hair = Instance.new("Accessory",Dummy)
+	Hair.Name = "Hair"
+	local HairHandle = Instance.new("Part",Hair)
+	HairHandle.Size = Vector3.new(1.944, 3.888, 1.944)
+	local HairMesh = Instance.new("SpecialMesh",HairHandle)
+	HairMesh.MeshId = "rbxassetid://4584774160"
+	HairMesh.MeshType = Enum.MeshType.FileMesh
+	HairMesh.Scale = Vector3.new(0.972, 0.972, 0.972)
+	HairMesh.TextureId = "rbxassetid://2599831937"
+	HairMesh.VertexColor = Vector3.new(0.366, 0.377, 0.448)
+	local HairWeld = Instance.new("Weld",HairHandle)
+	HairWeld.Name = "AccessoryWeld"
+	HairWeld.C0 = CFrame.new(0,1.027,-0.18)
+	HairWeld.C1 = CFrame.new(0, 0.583, 0)
+	HairWeld.Part0 = HairHandle
+	HairWeld.Part1 = Head
+	
+	--joints
+	local RootJoint = Instance.new("Motor6D",RootPart)
+	RootJoint.Name = "RootJoint"
+	RootJoint.Part0 = RootPart
+	RootJoint.Part1 = Torso
+	RootJoint.C0 = CFrame.new(0,0,0) * CFrame.Angles(math.rad(-90),math.rad(-180),math.rad(0))
+	RootJoint.C1 = CFrame.new(0,0,0) * CFrame.Angles(math.rad(-90),math.rad(-180),math.rad(0))
+	RootJoint.MaxVelocity = 0.1
+	
+	local Neck = Instance.new("Motor6D",Torso)
+	Neck.Name = "Neck"
+	Neck.Part0 = Torso
+	Neck.Part1 = Head
+	Neck.C0 = CFrame.new(0,1,0) * CFrame.Angles(math.rad(-90),math.rad(-180),math.rad(0))
+	Neck.C1 = CFrame.new(0,-0.5,0) * CFrame.Angles(math.rad(-90),math.rad(-180),math.rad(0))
+	Neck.MaxVelocity = 0.1
+	
+	local LeftHip = Instance.new("Motor6D",Torso)
+	LeftHip.Name = "Left Hip"
+	LeftHip.Part0 = Torso
+	LeftHip.Part1 = LeftLeg
+	LeftHip.C0 = CFrame.new(-1,-1,0) * CFrame.Angles(math.rad(0),math.rad(-90),math.rad(0))
+	LeftHip.C1 = CFrame.new(-0.5,1,0) * CFrame.Angles(math.rad(0),math.rad(-90),math.rad(0))
+	LeftHip.MaxVelocity = 0.1
+	
+	local RightHip = Instance.new("Motor6D",Torso)
+	RightHip.Name = "Right Hip"
+	RightHip.Part0 = Torso
+	RightHip.Part1 = RightLeg
+	RightHip.C0 = CFrame.new(1,-1,0) * CFrame.Angles(math.rad(0),math.rad(90),math.rad(0))
+	RightHip.C1 = CFrame.new(0.5,1,0) * CFrame.Angles(math.rad(0),math.rad(90),math.rad(0))
+	RightHip.MaxVelocity = 0.1
+	
+	local RightShoulder = Instance.new("Motor6D",Torso)
+	RightShoulder.Name = "Right Shoulder"
+	RightShoulder.Part0 = Torso
+	RightShoulder.Part1 = RightArm
+	RightShoulder.C0 = CFrame.new(1,0.5,0) * CFrame.Angles(math.rad(0),math.rad(90),math.rad(0))
+	RightShoulder.C1 = CFrame.new(-0.5,0.5,0) * CFrame.Angles(math.rad(0),math.rad(90),math.rad(0))
+	RightShoulder.MaxVelocity = 0.1
+
+	local LeftShoulder = Instance.new("Motor6D",Torso)
+	LeftShoulder.Name = "Left Shoulder"
+	LeftShoulder.Part0 = Torso
+	LeftShoulder.Part1 = LeftArm
+	LeftShoulder.C0 = CFrame.new(-1,0.5,0) * CFrame.Angles(math.rad(0),math.rad(-90),math.rad(0))
+	LeftShoulder.C1 = CFrame.new(0.5,0.5,0) * CFrame.Angles(math.rad(0),math.rad(-90),math.rad(0))
+	LeftShoulder.MaxVelocity = 0.1
+	
+	
+	
+	RootPart.CFrame = HumanoidRootPart.CFrame
+
+	Dummy.PrimaryPart = RootPart
+	
+	return Dummy
+end
+
+wait(5)
+
+CreateDummy()
